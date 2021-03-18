@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>HJCD studios | Photo Viewer</title>
+<meta name="description" content="A simple photo viewer by your files, choose files and see them">
+<meta name="author" content="HJCD studios">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+</head>
+<body>
+<center>
+<input type="file" id="files" onChnage="CreateImg()">
+<input type="button" value="Choose And Show Images" onClick="Choose();">
+<div id="imgs">
+</div>
+</center>
+<style type="text/css">
+input[type="file"] {
+  display: none;
+}
+input[type="button"] {
+  color: rgb(0,150,255);
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: white;
+  border-color: rgb(0,150,255);
+}
+</style>
+<script type="text/javascript">
+function Choose() {
+  document.getElementById("files").click();
+}
+function CreateImg() {
+  var f = document.getElementById("files").files;
+  var fr = new FileReader();
+  for(var i = 0; i < f.length; i++) {
+    fr.readAsDataURL(f[i]);
+  }
+  fr.onload = function() {
+    var m = document.createElement("img");
+    m.src = e.target.result;
+    m.alt = "ERROR";
+    document.getElementById("imgs").appendChild(m);
+  }
+}
+</script>
+</body>
+</html>
